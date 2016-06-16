@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html lang=en> 
+  <head>  
+    <meta charset=utf-8> 
+    <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+    <meta name=viewport content="width=device-width,initial-scale=1">
+
+    <title>League of Coders</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <link href="/Semantic-UI/semantic.min.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous">
+    </script>
+    
+    <script src="/Semantic-UI/semantic.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
+    <!-- <script src="/js/jquery.csv.js"></script> -->
+
+  </head>
+
+  <body>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+      <div class="ui inverted vertical masthead center aligned segment">
+
+        <div class="ui text container">
+          <h1 class="ui inverted header">
+            League of <i class="woman icon huge"></i>Coders
+          </h1>
+        </div>
+
+      </div>
+
+      <div id="coder-detail" class="ui vertical stripe segment">
+
+      </div>
+      
+    </div>
+
+    <script>
+
+      function getQueryParam(param) {
+        var querystring = window.location.search.substring(1);
+        if (querystring !== "") {
+          var queryparams = querystring.split("&");
+          for (var i=0;i<queryparams.length;i++) {
+            var pair = queryparams[i].split("=");
+            if(pair[0] == param){return decodeURIComponent(pair[1]);}
+          }
+        }
+        return(false);
+      }
+
+      $(document).ready(function() {
+
+        $.ajax({
+          url: '/data/wit.json',
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+
+            // get profiles
+            var profiles = data.profiles;
+            // loop through each profile in the data file to find the one with id passed
+            $.each(profiles, function( i, val ) {
+              
+              var id = getQueryParam('id');
+
+              if (val.id == id) {
+                //show detail
+                // 1. fill in values from profile 
+                var details = $(`
+                  <div class="ui middle aligned stackable grid container">
+                    <div class="row">
+                      <div class="eight wide column">
+                        <h1 class="ui header">${val.name}</h1>
+                        <p>${val.details}</p>
+                        <a class="ui right labeled icon button" href="${val.website}">
+                        <i class="right arrow icon"></i>
+                          More
+                        </a>
+                      </div>
+                      <div class="six wide right floated column">
+                        <img src="${val.image_path}" class="ui large bordered rounded image">
+                      </div>
+                    </div>
+                  </div>`);
+
+                // 2. append to coder-cards container (div) on page
+                $('#coder-detail').append(details);
+              }
+
+            });
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

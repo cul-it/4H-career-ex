@@ -1,0 +1,45 @@
+
+/* for the alt version - divided vertically down the center */
+.left{
+  background-color: #eee;
+  width:50%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  float:left;
+  padding:3% 7%;
+  box-sizing: border-box;
+  background:url("/img/01-women-in-technology-computer-program.jpg") no-repeat;
+  background-size:cover;
+  background-position: center center; 
+  top: 0; bottom: 0; left: 0;
+  right: 50%;
+}
+.right{
+  background-color: #eee;
+  width:50%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  float:right;
+  padding:3% 7%;
+  box-sizing: border-box;
+  top: 0; bottom: 0; left: 0;
+  left: 50%;
+}
+.image_title{
+    position:absolute;
+    bottom: 80px;
+    background: rgba(0,0,0,0.4);
+    text-align: center;
+    left:0;
+    width: 100%;
+    height:auto;
+  }
+  
+.image_title h5{
+  font-size: 48px;
+  color: #FFFFFF;
+  padding:32px;
+  margin: 0px;
+}
