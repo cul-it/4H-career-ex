@@ -16,14 +16,14 @@
     </script>
     
     <script src="/Semantic-UI/semantic.min.js"></script>
-   
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
+    <!-- <script src="/js/jquery.csv.js"></script> -->
   </head>
 
   <body>
 
   <!-- Page Contents -->
   <div class="pusher">
-
     <div class="ui inverted vertical masthead center aligned segment">
 
       <div class="ui text container">
@@ -90,7 +90,7 @@
     <!-- directory -->
     <div class="ui vertical stripe segment container">
       <h1 class="ui header">Notable Coders</h1>
-      <div id="coder-cards" class="ui five doubling cards">
+      <div id="coder-cards" class="ui four column grid">
         <!-- PLACEHOLDER FOR CARDS -->
       </div>
     </div>
@@ -123,7 +123,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <script>
@@ -146,61 +145,48 @@
           // get profiles
           var profiles = data.profiles;
 
-          // for debugging
-          // console.log(profiles);
-
-          profiles.sort(function(a, b) {
-            console.log(a, b);
-            var nameA = a.surname.toUpperCase(); // ignore upper and lowercase
-            var nameB = b.surname.toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-              return -1;
-            }
-            if (nameA > nameB) {
-              return 1;
-            }
-
-            // names must be equal
-            return 0;
-          });
 
           // loop through each profile in the data file
           $.each(profiles, function( i, val ) {
             // for debugging
             //console.log(val);
 
+            
+
             // 1. fill in values from profile 
             var card = $(`
-              <a class="ui fluid card" href="show.html?id=${val.id}">
-                <div class="image">
-                  <img class="ui fluid image" src="${val.image_path}">
-                </div>
-                <div class="content">
-                  <div class="header">${val.given_name} ${val.surname}</div>`
-                  + (val.known_for ? `<div class="description">${val.known_for}</div>` : '') + 
-                `</div>
-                <div class="extra content">
-                  <span>` + (val.birth_year ? val.birth_year : '') + (val.death_year ? ' - ' + val.death_year : '') + `</span>
-                </div>
-              </a>`);
+              <div class="column profile" data-surname="${val.surname}">
+                <a class="ui fluid card" href="show.html?id=${val.id}">
+                  <div class="image">
+                    <img class="ui fluid image" src="${val.image_path}">
+                  </div>
+                  <div class="content">
+                    <div class="header">${val.name}</div>
+                    <div class="description">${val.name}</div>
+                  </div>
+                </a>
+              </div>`);
 
-            // 2. append to coder-cards container (div) on page
+            // 2.a. append to coder-cards container (div) on page
             $('#coder-cards').append(card);
 
-          }); //$.each
-        } //success
-      }); //$.ajax
+            
+          }); // $.each  
+
+        } // success
+      }); // $.ajax 
 
       // 2.b. sort (this will be a button on the page so the user can change it)
-      var $wrapper = $('#coder-cards');
+      var $wrapper = $('.grid');
       // console.log($wrapper);
       // console.log($wrapper.find('.profile').css("background-color", "red"));
-      $wrapper.find('.card').sort(function (a, b) {
-          return +a.dataset.given_name - +b.dataset.given_name;
+      $wrapper.find('.profile').sort(function (a, b) {
+          return +a.dataset.surname - +b.dataset.surname;
       })
       .appendTo( $wrapper );
+    }); // $(document).ready 
 
-    }); //$(document).ready
+
 
   </script>
 

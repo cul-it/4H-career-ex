@@ -16,8 +16,6 @@
     </script>
     
     <script src="/Semantic-UI/semantic.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
-    <!-- <script src="/js/jquery.csv.js"></script> -->
 
   </head>
 
@@ -25,7 +23,7 @@
     
     <!-- Page Contents -->
     <div class="pusher">
-      <div class="ui inverted vertical masthead center aligned segment">
+      <div class="ui inverted vertical small masthead center aligned segment">
 
         <div class="ui text container">
           <h1 class="ui inverted header">
@@ -37,6 +35,35 @@
 
       <div id="coder-detail" class="ui vertical stripe segment">
 
+      </div>
+
+      <!-- footer -->
+      <div class="ui inverted vertical footer segment">
+        <div class="ui container">
+          <div class="ui stackable inverted divided equal height stackable grid">
+            <div class="three wide column">
+              <h4 class="ui inverted header">Resources</h4>
+              <div class="ui inverted link list">
+                <a href="#" class="item">Wikipedia 1</a>
+                <a href="#" class="item">Wikipedia 2</a>
+                <a href="#" class="item">Article 1</a>
+              </div>
+            </div>
+            <div class="three wide column">
+              <h4 class="ui inverted header">Cornell University Library - Information Technology</h4>
+              <div class="ui inverted link list">
+                <a href="#" class="item"></a>
+                <a href="#" class="item"></a>
+                <a href="#" class="item"></a>
+                <a href="#" class="item"></a>
+              </div>
+            </div>
+            <div class="seven wide column">
+              <h4 class="ui inverted header">Footer Header</h4>
+              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+            </div>
+          </div>
+        </div>
       </div>
       
     </div>
@@ -74,7 +101,7 @@
                 //show detail
                 // 1. fill in values from profile 
                 var details = $(`
-                  <div class="ui middle aligned stackable grid container">
+                  <div class="ui top aligned stackable grid container">
                     <div class="row">
                       <div class="eight wide column">
                         <h1 class="ui header">${val.name}</h1>
