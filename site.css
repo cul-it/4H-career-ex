@@ -1,0 +1,79 @@
+/*.hidden.menu {
+  display: none;
+}*/
+
+.ui.inverted.segment {
+  background: url('/img/sm-women-in-technology-computer-program.jpg');
+}
+
+.masthead.segment {
+  min-height: 500px;
+  padding: 1em 0em;
+}
+
+.small.masthead.segment {
+  min-height: 100px;
+  padding: .5em 0em;
+}
+
+.masthead h1.ui.header {
+  margin-top: 3em;
+  margin-bottom: 0em;
+  font-size: 3em;
+  font-weight: normal;
+}
+
+.small.masthead h1.ui.header {
+  margin-top: .2em;
+}
+
+@media only screen and (max-width: 700px) {
+  .masthead.segment {
+    min-height: 350px;
+  }
+  .masthead h1.ui.header {
+    font-size: 2em;
+    margin-top: 1.5em;
+  }
+}
+
+.ui.vertical.stripe {
+  padding: 8em 0em;
+}
+.ui.vertical.stripe h3 {
+  font-size: 2em;
+}
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+  margin-top: 3em;
+}
+.ui.vertical.stripe .floated.image {
+  clear: both;
+}
+.ui.vertical.stripe p, .ui.vertical.stripe ul li {
+  font-size: 1.33em;
+  line-height: 1.33em;
+}
+.ui.vertical.stripe .horizontal.divider {
+  margin: 3em 0em;
+}
+/*.ui.secondary.inverted.menu {
+  border: none;
+}*/
+
+.footer.segment {
+  padding: 5em 0em;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html lang=en> 
+  <head>  
+    <meta charset=utf-8> 
+    <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+    <meta name=viewport content="width=device-width,initial-scale=1">
+
+    <title>League of Coders</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <link href="/Semantic-UI/semantic.min.css" rel="stylesheet">
+    <link href="site.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous">
+    </script>
+    
+    <script src="/Semantic-UI/semantic.min.js"></script>
+
+  </head>
+
+  <body>
+    
+    <!-- Page Contents -->
+    <div class="ui inverted vertical small masthead center aligned segment">
+
+      <div class="ui container">
+        <div class="ui large secondary inverted menu">
+          <a class="active item" href="/">Home</a>
+          <a class="item" href="/#then">Then</a>
+          <a class="item" href="/#now">Now</a>
+          <a class="item" href="/#collection">Collection</a>
+          <a class="item" href="/resources.html">Resources</a>
+        </div>
+      </div>
+
+      <div class="ui text container">
+        <h1 class="ui inverted header">League of <i class="woman icon huge"></i>Coders</h1>
+      </div>
+
+    </div>
+
+    <div id="coder-detail" class="ui vertical stripe segment">
+
+    </div>
+
+    <script>
+
+      function getQueryParam(param) {
+        var querystring = window.location.search.substring(1);
+        if (querystring !== "") {
+          var queryparams = querystring.split("&");
+          for (var i=0;i<queryparams.length;i++) {
+            var pair = queryparams[i].split("=");
+            if(pair[0] == param){return decodeURIComponent(pair[1]);}
+          }
+        }
+        return(false);
+      }
+
+      $(document).ready(function() {
+
+        $.ajax({
+          url: '/data/wit.json',
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+            // show detail
+            // 1. get profiles
+            var profiles = data.profiles;
+
+            var details = '';
+
+            var id = getQueryParam('id');
+            if (id) {
+              // 2. loop through each profile in the data file to find the one with id passed
+              $.each(profiles, function( i, val ) {
+
+                if (val.id == id) {
+                  
+                  // 3. fill in values from profile 
+                  details = $(`
+                    <div class="ui top aligned stackable grid container">
+                      <div class="row">
+                        <div class="eight wide column">
+                          <h1 class="ui header">${val.name}</h1>
+                          <p>${val.details}</p>
+                          <a class="ui right labeled icon button" href="${val.website}">
+                          <i class="right arrow icon"></i>
+                            More
+                          </a>
+                        </div>
+                        <div class="six wide right floated column">
+                          <img src="${val.image_path}" class="ui large bordered rounded image">
+                        </div>
+                      </div>
+                    </div>`);
+                } //end if
+
+              });   
+
+            } else {
+              details = $(`
+                <div class="ui one column centered grid">
+                  <div class="column center aligned">
+                    <i class="huge icons">
+                      <i class="big red dont icon"></i>
+                      <i class="black woman icon"></i>
+                    </i>
+                    <h1 class="ui header">Oops, not found!</h1>
+                    <p>Hopefully another woman didn't leave the tech industry!</p>
+                  </div>
+                </div>`);
+            } //end if
+              
+            // 2. append to coder-cards container (div) on page
+            $('#coder-detail').append(details);
+           
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
