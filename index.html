@@ -68,7 +68,7 @@
       <div class="ui middle aligned stackable grid container">
         <div class="row">
           <div class="six wide column">
-            <img src="/img/now-chart.png" class="ui large bordered rounded image">
+            <img src="/img/stock-photo-assistance-for-student-from-teacher-in-university-85605394.jpg" class="ui large bordered rounded image">
           </div>
 
           <div class="eight wide right floated column">
@@ -89,7 +89,18 @@
 
     <!-- directory -->
     <div class="ui vertical stripe segment container">
-      <h1 class="ui header">Notable Coders</h1>
+      <!-- <div class="ui segment"> -->
+      <div class="ui dividing header">
+        <h1 class="ui left floated">Notable Coders</h1>
+
+        <select id="sort_by" class="ui dropdown right floated">
+          <option value="">Sort by</option>
+          <option value="given_name">First Name</option>
+          <option value="surname">Last Name</option>
+          <option value="birth_year">Birth Year</option>
+        </select>
+      <!-- </h1> -->
+      </div>
       <div id="coder-cards" class="ui five doubling cards">
         <!-- PLACEHOLDER FOR CARDS -->
       </div>
@@ -130,11 +141,7 @@
     
     $(document).ready(function() {
 
-      // use d3 to convert csv to json (if we're going to use csv instead of json)
-      // other options include papaparse.js and jquery.csv.js
-      // creates an array of objects
-      // d3.csv('treechart.csv', function(data){console.log(data);})
-
+      // http://api.jquery.com/jquery.ajax/
       $.ajax({
         url: '/data/wit.json',
         type: "POST",
@@ -143,35 +150,16 @@
           // for debugging
           // console.log(data);
 
-          // get profiles
+          // get profiles from data
           var profiles = data.profiles;
 
-          // for debugging
-          // console.log(profiles);
-
-          profiles.sort(function(a, b) {
-            console.log(a, b);
-            var nameA = a.surname.toUpperCase(); // ignore upper and lowercase
-            var nameB = b.surname.toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-              return -1;
-            }
-            if (nameA > nameB) {
-              return 1;
-            }
-
-            // names must be equal
-            return 0;
-          });
-
-          // loop through each profile in the data file
+          // loop through each profile in the data file 
+          // create a card for each profile
           $.each(profiles, function( i, val ) {
-            // for debugging
-            //console.log(val);
-
+        
             // 1. fill in values from profile 
             var card = $(`
-              <a class="ui fluid card" href="show.html?id=${val.id}">
+              <a class="ui fluid card" href="show.html?id=${val.id}" data-given_name="${val.given_name}" data-surname="${val.surname}" data-birth_year="${val.birth_year}" >
                 <div class="image">
                   <img class="ui fluid image" src="${val.image_path}">
                 </div>
@@ -188,19 +176,44 @@
             $('#coder-cards').append(card);
 
           }); //$.each
+
+          // 3. initial sort is surname (last name)
+          sortCards('surname');
+
         } //success
       }); //$.ajax
 
-      // 2.b. sort (this will be a button on the page so the user can change it)
-      var $wrapper = $('#coder-cards');
-      // console.log($wrapper);
-      // console.log($wrapper.find('.profile').css("background-color", "red"));
-      $wrapper.find('.card').sort(function (a, b) {
-          return +a.dataset.given_name - +b.dataset.given_name;
-      })
-      .appendTo( $wrapper );
+      //listener for sort by dropdown/select
+      //if changed, then resort
+      $('#sort_by').change(function () {
+        sortCards($(this).val());
+      });
 
     }); //$(document).ready
+
+
+    function sortCards(field) {
+
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+      var $wrapper = $('#coder-cards');
+
+      $wrapper.find('.card').sort(function (a, b) {
+          var valueA = a.dataset[field];
+          var valueB = b.dataset[field];
+          if (valueA < valueB) {
+            return -1;
+          }
+          if (valueA > valueB) {
+            return 1;
+          }
+          //names must be equal
+          return 0;
+      }).appendTo( $wrapper );
+    }
+
+
+
+
 
   </script>
 

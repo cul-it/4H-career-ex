@@ -48,8 +48,9 @@
 .ui.vertical.stripe .floated.image {
   clear: both;
 }
-.ui.vertical.stripe p {
+.ui.vertical.stripe p, .ui.vertical.stripe ul li {
   font-size: 1.33em;
+  line-height: 1.33em;
 }
 .ui.vertical.stripe .horizontal.divider {
   margin: 3em 0em;
