@@ -13,17 +13,19 @@
 
 .small.masthead.segment {
   min-height: 100px;
-  padding: .2em 0em;
+  padding: .5em 0em;
 }
 
-
 .masthead h1.ui.header {
-  margin-top: .2em;
+  margin-top: 3em;
   margin-bottom: 0em;
   font-size: 3em;
   font-weight: normal;
 }
 
+.small.masthead h1.ui.header {
+  margin-top: .2em;
+}
 
 @media only screen and (max-width: 700px) {
   .masthead.segment {
@@ -55,6 +57,9 @@
 .ui.vertical.stripe .horizontal.divider {
   margin: 3em 0em;
 }
+/*.ui.secondary.inverted.menu {
+  border: none;
+}*/
 
 .footer.segment {
   padding: 5em 0em;

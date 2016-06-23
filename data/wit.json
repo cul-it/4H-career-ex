@@ -28,7 +28,7 @@
       "given_name":"Adele",
       "surname":"Goldberg",
       "known_for":"Smalltalk",
-      "alma_mater":"University of Michigan;University of Chicago"
+      "alma_mater":"University of Michigan; University of Chicago"
    },
    {
       "id":"2",
@@ -98,7 +98,7 @@
       "given_name":"Beatrice Helen",
       "surname":"Worsley",
       "known_for":"Pioneering, Canadian computer scientist",
-      "alma_mater":"University of Toronto;Massachusetts Institute of Technology;Newnham College, Cambridge"
+      "alma_mater":"University of Toronto;Massachusetts Institute of Technology; Newnham College, Cambridge"
    },
    {
       "id":"7",
@@ -166,7 +166,7 @@
       "birth_year":"1938",
       "given_name":"Dana",
       "surname":"Ulery",
-      "alma_mater":"Grinnell College;University of Delaware"
+      "alma_mater":"Grinnell College; University of Delaware"
    },
    {
       "id":"12",
@@ -181,7 +181,7 @@
       "given_name":"Donna",
       "surname":"Dubinsky",
       "known_for":"CEO of Palm and Handspring and Numenta",
-      "alma_mater":"Harvard Business School;Yale University"
+      "alma_mater":"Harvard Business School; Yale University"
    },
    {
       "id":"13",
@@ -196,7 +196,7 @@
       "death_year":"1959",
       "given_name":"Edith",
       "surname":"Clarke",
-      "alma_mater":"Massachusetts Institute of Technology;Vassar College"
+      "alma_mater":"Massachusetts Institute of Technology; Vassar College"
    },
    {
       "id":"14",
@@ -211,7 +211,7 @@
       "given_name":"Elizabeth Jocelyn",
       "surname":"Feinler",
       "known_for":"Creating and running the original ARPANET NIC at SRI",
-      "alma_mater":"West Liberty University;Purdue University"
+      "alma_mater":"West Liberty University; Purdue University"
    },
    {
       "id":"15",
@@ -225,7 +225,7 @@
       "given_name":"Ellen",
       "surname":"Spertus",
       "known_for":"App Inventor for Android, leasing a General Motors EV1",
-      "alma_mater":"Computer science;Massachusetts Institute of Technology;Bachelor of Science;Master's degree;Doctor of Philosophy"
+      "alma_mater":"Massachusetts Institute of Technology"
    },
    {
       "id":"16",
@@ -240,7 +240,7 @@
       "given_name":"Erna Schneider",
       "surname":"Hoover",
       "known_for":"Computerized system;for phone traffic",
-      "alma_mater":"Yale University;Wellesley College"
+      "alma_mater":"Yale University; Wellesley College"
    },
    {
       "id":"17",
@@ -485,7 +485,7 @@
       "dbpedia_uri":"http://dbpedia.org/resource/Joanna_Rutkowska",
       "given_name":"Joanna",
       "surname":"Rutkowska",
-      "known_for":"Rootkit;Qubes OS;Blue Pill (software)"
+      "known_for":"Rootkit; Qubes OS; Blue Pill (software)"
    },
    {
       "id":"35",
@@ -673,7 +673,7 @@
       "birth_year":"1964",
       "given_name":"Mary Lou",
       "surname":"Jepsen",
-      "known_for":"Co-founder, One Laptop Per Child;Co-founder, One Laptop Per Child",
+      "known_for":"Co-founder, One Laptop Per Child",
       "alma_mater":"Brown University"
    },
    {
@@ -853,7 +853,7 @@
       "birth_year":"1958",
       "given_name":"Shafi",
       "surname":"Goldwasser",
-      "known_for":"Goldwasser–Micali cryptosystem;Blum–Goldwasser cryptosystem;*",
+      "known_for":"Goldwasser–Micali cryptosystem; Blum–Goldwasser cryptosystem;",
       "alma_mater":"University of California, Berkeley;Carnegie Mellon University"
    },
    {
@@ -870,7 +870,7 @@
       "given_name":"Mary Kenneth",
       "surname":"Keller",
       "known_for":"BASIC",
-      "alma_mater":"University of Wisconsin–Madison;DePaul University"
+      "alma_mater":"University of Wisconsin–Madison; DePaul University"
    },
    {
       "id":"64",
@@ -884,7 +884,7 @@
       "birth_year":"1957",
       "given_name":"Sophie",
       "surname":"Wilson",
-      "known_for":"Acorn Computers;BBC Micro;BBC BASIC;ARM architecture",
+      "known_for":"Acorn Computers; BBC Micro; BBC BASIC; ARM architecture",
       "alma_mater":"University of Cambridge"
    },
    {
