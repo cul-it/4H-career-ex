@@ -128,7 +128,10 @@
       <option value="birth_year">Birth Year</option>
     </select>
     <div class="ui section divider"></div>
-    <div id="coder-cards" class="ui five doubling cards">
+    <ul id="wit-list">
+      <!-- PLACEHOLDER FOR CARDS -->
+    </ul>
+    <div id="wit-cards" class="ui five doubling cards">
       <!-- PLACEHOLDER FOR CARDS -->
     </div>
   </div>
@@ -157,8 +160,10 @@
         type: "POST",
         dataType: 'json',
         success: function (data) {
-          // for debugging
-          // console.log(data);
+
+          // *********************************************  //
+          // CODING - Step 1: Directory/Index (simple list) //
+          // *********************************************  //
 
           // get profiles from data
           var profiles = data.profiles;
@@ -167,13 +172,15 @@
           // create a card for each profile
           $.each(profiles, function( i, val ) {
 
-            var known_for = '', 
-                birth_year = '', 
-                death_year = '';
+            // 1. fill in values from profile 
+            var list_item = $(`<li><a href="show.html?id=${val.id}">${val.given_name} ${val.surname}</a></li>`);
+            
+            // 2. append to wit-list container (div) on page
+            $('#wit-list').append(list_item);
 
-            if (val.known_for) {
-              known_for = val.known_for;
-            } 
+            // assign variables for values that may or may not exist 
+            var birth_year = '', 
+                death_year = '';
 
             if (val.birth_year) {
               birth_year = val.birth_year;
@@ -182,6 +189,10 @@
             if (val.death_year) {
               death_year = " - " + val.death_year;
             }
+
+            // ************************************************  //
+            // CODING - Step 3: Enhanced Directory/Index (cards) //
+            // ************************************************  //
             
             // 1. fill in values from profile 
             var card = $(`
@@ -191,15 +202,14 @@
                 </div>
                 <div class="content">
                   <div class="header">${val.given_name} ${val.surname}</div>
-                  <div class="description">${known_for}</div>
                 </div>
                 <div class="extra content">
                   <span>${birth_year}${death_year}</span>
                 </div>
               </a>`);
 
-            // 2. append to coder-cards container (div) on page
-            $('#coder-cards').append(card);
+            // 2. append to wit-cards container (div) on page
+            $('#wit-cards').append(card);
 
           }); //$.each
 
@@ -221,7 +231,7 @@
     function sortCards(field) {
 
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-      var $wrapper = $('#coder-cards');
+      var $wrapper = $('#wit-cards');
 
       $wrapper.find('.card').sort(function (a, b) {
           var valueA = a.dataset[field];
@@ -236,9 +246,6 @@
           return 0;
       }).appendTo( $wrapper );
     }
-
-
-
 
 
   </script>

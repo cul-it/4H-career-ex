@@ -40,12 +40,13 @@
 
     </div>
 
-    <div id="coder-detail" class="ui vertical stripe segment">
+    <div id="wit-detail" class="ui vertical stripe segment">
 
     </div>
 
     <script>
 
+      // Retrieve a value from a parameter in a query string 
       function getQueryParam(param) {
         var querystring = window.location.search.substring(1);
         if (querystring !== "") {
@@ -65,26 +66,55 @@
           type: "POST",
           dataType: 'json',
           success: function (data) {
-            // show detail
-            // 1. get profiles
+            
+            // **************************************** //
+            // CODING - Step 2: Details for a WIT by ID //
+            // **************************************** //
+
             var profiles = data.profiles;
 
             var details = '';
 
             var id = getQueryParam('id');
             if (id) {
-              // 2. loop through each profile in the data file to find the one with id passed
+
+              // loop through each profile in the data file to find the one with id passed
               $.each(profiles, function( i, val ) {
 
                 if (val.id == id) {
+
+                  // assign variables for values that may or may not exist 
+                  var known_for = '', 
+                      alma_mater = '',
+                      birth_year = '', 
+                      death_year = '';
+
+                  if (val.known_for) {
+                    known_for = val.known_for;
+                  } 
+
+                  if (val.alma_mater) {
+                    alma_mater = val.alma_mater;
+                  } 
+
+                  if (val.birth_year) {
+                    birth_year = val.birth_year;
+                  }
                   
-                  // 3. fill in values from profile 
+                  if (val.death_year) {
+                    death_year = " - " + val.death_year;
+                  }
+                  
+                  // fill in values from profile 
                   details = $(`
                     <div class="ui top aligned stackable grid container">
                       <div class="row">
                         <div class="eight wide column">
-                          <h1 class="ui header">${val.name}</h1>
+                          <h1 class="ui header">${val.given_name} ${val.surname}</h1>
+                          <p>${birth_year}${death_year}</p>
                           <p>${val.details}</p>
+                          <p><strong>Known For:</strong> ${known_for}</p>
+                          <p><strong>Alma Mater:</strong> ${alma_mater}</p>
                           <a class="ui right labeled icon button" href="${val.website}">
                           <i class="right arrow icon"></i>
                             More
@@ -99,7 +129,8 @@
 
               });   
 
-            } else {
+            } else { //error handling - no ID passed
+              
               details = $(`
                 <div class="ui one column centered grid">
                   <div class="column center aligned">
@@ -113,8 +144,8 @@
                 </div>`);
             } //end if
               
-            // 2. append to coder-cards container (div) on page
-            $('#coder-detail').append(details);
+            // append to wit-details container (div) on page
+            $('#wit-detail').append(details);
            
           }
         });
