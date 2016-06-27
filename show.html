@@ -61,6 +61,7 @@
 
       $(document).ready(function() {
 
+        //http://api.jquery.com/jquery.ajax/
         $.ajax({
           url: '/data/wit.json',
           type: "POST",
@@ -71,19 +72,25 @@
             // CODING - Step 2: Details for a WIT by ID //
             // **************************************** //
 
+            //get profiles
             var profiles = data.profiles;
 
+            //set/initialize detail variable
             var details = '';
 
+            //get id from querystring (url)
             var id = getQueryParam('id');
+
+            //if there's an id
             if (id) {
 
-              // loop through each profile in the data file to find the one with id passed
+              // 2-a. loop through each profile in the data file to find the one with id passed
               $.each(profiles, function( i, val ) {
 
                 if (val.id == id) {
 
-                  // assign variables for values that may or may not exist 
+                  // 2-d. assign variables for values that may or may not exist 
+                  // out of order, you can first show them without this and they'll get a lot of "undefined" text on the page, then add this handling
                   var known_for = '', 
                       alma_mater = '',
                       birth_year = '', 
@@ -105,7 +112,7 @@
                     death_year = " - " + val.death_year;
                   }
                   
-                  // fill in values from profile 
+                  // 2-b. fill in values from profile 
                   details = $(`
                     <div class="ui top aligned stackable grid container">
                       <div class="row">
@@ -129,7 +136,7 @@
 
               });   
 
-            } else { //error handling - no ID passed
+            } else { // 2-e. error handling for no ID passed/found - may or may not get to this 
               
               details = $(`
                 <div class="ui one column centered grid">
@@ -144,7 +151,7 @@
                 </div>`);
             } //end if
               
-            // append to wit-details container (div) on page
+            // 2-c. append to wit-details container (div) on page
             $('#wit-detail').append(details);
            
           }

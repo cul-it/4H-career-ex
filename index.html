@@ -154,6 +154,7 @@
           // you can use any ui transition
           transition: 'drop'
       });
+      
       // http://api.jquery.com/jquery.ajax/
       $.ajax({
         url: '/data/wit.json',
@@ -168,17 +169,21 @@
           // get profiles from data
           var profiles = data.profiles;
 
-          // loop through each profile in the data file 
-          // create a card for each profile
+          // 1-a. loop through each profile in the data file 
           $.each(profiles, function( i, val ) {
 
-            // 1. fill in values from profile 
+            // 1-b. create a list item and fill in values from profile 
             var list_item = $(`<li><a href="show.html?id=${val.id}">${val.given_name} ${val.surname}</a></li>`);
             
-            // 2. append to wit-list container (div) on page
+            // 1.c. append to wit-list container (div) on page
             $('#wit-list').append(list_item);
 
-            // assign variables for values that may or may not exist 
+
+            // ************************************************  //
+            // CODING - Step 3: Enhanced Directory/Index (cards) //
+            // ************************************************  //
+
+            // 3-a. assign variables for values that may or may not exist 
             var birth_year = '', 
                 death_year = '';
 
@@ -189,12 +194,8 @@
             if (val.death_year) {
               death_year = " - " + val.death_year;
             }
-
-            // ************************************************  //
-            // CODING - Step 3: Enhanced Directory/Index (cards) //
-            // ************************************************  //
             
-            // 1. fill in values from profile 
+            // 3-b. create a card and fill in values from profile 
             var card = $(`
               <a class="ui fluid card" href="show.html?id=${val.id}" data-given_name="${val.given_name}" data-surname="${val.surname}" data-birth_year="${val.birth_year}" >
                 <div class="image">
@@ -208,12 +209,12 @@
                 </div>
               </a>`);
 
-            // 2. append to wit-cards container (div) on page
+            // 3-c. append to wit-cards container (div) on page
             $('#wit-cards').append(card);
 
           }); //$.each
 
-          // 3. initial sort is surname (last name)
+          // 3-d. initial sort is surname (last name)
           sortCards('surname');
 
         } //success
@@ -227,7 +228,7 @@
 
     }); //$(document).ready
 
-
+    //sort cards - surname, given name or birth date
     function sortCards(field) {
 
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
