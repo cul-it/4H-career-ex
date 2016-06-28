@@ -43,7 +43,7 @@
     <div id="wit-detail" class="ui vertical stripe segment">
 
     </div>
-    
+
     <div class="ui container">
       <p>&nbsp;</p>
       <small>&copy; 2016 League of <i class="woman icon"></i> Coders</small>
@@ -97,22 +97,44 @@
 
                   // 2-d. assign variables for values that may or may not exist 
                   // out of order, you can first show them without this and they'll get a lot of "undefined" text on the page, then add this handling
+                  var known_for = '', 
+                      alma_mater = '',
+                      birth_year = '', 
+                      death_year = '';
+
+                  if (val.known_for) {
+                    known_for = val.known_for;
+                  } 
+
+                  if (val.alma_mater) {
+                    alma_mater = val.alma_mater;
+                  } 
+
+                  if (val.birth_year) {
+                    birth_year = val.birth_year;
+                  }
                   
+                  if (val.death_year) {
+                    death_year = " - " + val.death_year;
+                  }
                   
                   // 2-b. fill in values from profile 
                   details = $(`
                     <div class="ui top aligned stackable grid container">
                       <div class="row">
                         <div class="eight wide column">
-                          <h1 class="ui header"></h1>
-                          <p></p>
-                          <a class="ui right labeled icon button" href="">
+                          <h1 class="ui header">${val.given_name} ${val.surname}</h1>
+                          <p>${birth_year}${death_year}</p>
+                          <p>${val.details}</p>
+                          <p><strong>Known For:</strong> ${known_for}</p>
+                          <p><strong>Alma Mater:</strong> ${alma_mater}</p>
+                          <a class="ui right labeled icon button" href="${val.website}">
                           <i class="right arrow icon"></i>
                             More
                           </a>
                         </div>
                         <div class="six wide right floated column">
-                          <!-- placeholder image -->
+                          <img src="${val.image_path}" class="ui large bordered rounded image">
                         </div>
                       </div>
                     </div>`);
@@ -120,24 +142,23 @@
 
               });   
 
-            } else { // 2-e. error handling for no ID passed/found - may or may not get to this, but code is ready to go!
+            } else { // 2-e. error handling for no ID passed/found - may or may not get to this 
               
-              // details = $(`
-              //   <div class="ui one column centered grid">
-              //     <div class="column center aligned">
-              //       <i class="huge icons">
-              //         <i class="big red dont icon"></i>
-              //         <i class="black woman icon"></i>
-              //       </i>
-              //       <h1 class="ui header">Oops, not found!</h1>
-              //       <p>Hopefully another woman didn't leave the tech industry!</p>
-              //     </div>
-              //   </div>`);
-
+              details = $(`
+                <div class="ui one column centered grid">
+                  <div class="column center aligned">
+                    <i class="huge icons">
+                      <i class="big red dont icon"></i>
+                      <i class="black woman icon"></i>
+                    </i>
+                    <h1 class="ui header">Oops, not found!</h1>
+                    <p>Hopefully another woman didn't leave the tech industry!</p>
+                  </div>
+                </div>`);
             } //end if
               
             // 2-c. append to wit-details container (div) on page
-            
+            $('#wit-detail').append(details);
            
           }
         });

@@ -182,7 +182,7 @@
         fade: true,
         cssEase: 'linear',
         adaptiveHeight: true
-      });
+      });1
 
 
       $('.dropdown').dropdown({
@@ -200,49 +200,56 @@
           // *********************************************  //
           // CODING - Step 1: Directory/Index (simple list) //
           // *********************************************  //
-
+ 
           // get profiles from data
           var profiles = data.profiles;
-
+ 
           // 1-a. loop through each profile in the data file 
-          
-
+          $.each(profiles, function( i, val ) {
+ 
             // 1-b. create a list item and fill in values from profile 
-            
-            
-            // 1.c. append to wit-list container (div) on page
-            
-
+            // var list_item = $(`<li><a href="show.html?id=${val.id}">${val.given_name} ${val.surname}</a></li>`);             
+            // // 1.c. append to wit-list container (div) on page
+            // $('#wit-list').append(list_item);
 
             // ************************************************  //
             // CODING - Step 3: Enhanced Directory/Index (cards) //
             // ************************************************  //
 
             // 3-a. assign variables for values that may or may not exist 
-            
+            var birth_year = '', 
+                death_year = '';
+
+            if (val.birth_year) {
+              birth_year = val.birth_year;
+            }
+ 
+            if (val.death_year) {
+              death_year = " - " + val.death_year;
+            }
 
             // 3-b. create a card and fill in values from profile 
             var card = $(`
-              <a class="ui card" href="show.html?id=" data-given_name="" data-surname="" data-birth_year="" >
-                <div class="image">
-                  
-                </div>
-                <div class="content">
-                  
-                </div>
-                <div class="extra content">
-                  
-                </div>
+              <a class="ui fluid card" href="show.html?id=${val.id}" data-given_name="${val.given_name}" data-surname="${val.surname}" data-birth_year="${val.birth_year}" >
+                 <div class="image">
+                   <img class="ui fluid image" src="${val.image_path}">
+                 </div>
+                 <div class="content">
+                   <div class="header">${val.given_name} ${val.surname}</div>
+                 </div>
+                 <div class="extra content">
+                   <span>${birth_year}${death_year}</span>
+                 </div>
               </a>`);
 
-            // 3-c. append to wit-cards container (div) on page
-            
-
-          
+              // 3-c. append to wit-cards container (div) on page
+             $('#wit-cards').append(card);
+ 
+          }); //$.each
 
           // 3-d. initial sort is surname (last name)
+          sortCards('surname');
           
-
         } //success
       }); //$.ajax
 
