@@ -7,7 +7,6 @@
 
     <title>League of Coders</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="Semantic-UI/semantic.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
@@ -204,43 +203,47 @@
           // get profiles from data
           var profiles = data.profiles;
 
-          // 1-a. loop through each profile in the data file 
-          
+          // 1-a. define variables for 'for' loop
 
-            // 1-b. create a list item and fill in values from profile 
-            
-            
-            // 1.c. append to wit-list container (div) on page
-            
+          // 1-b. loop through each profile in the data file 
+
+
+            //console.log("position is " + position);
+
+            // 1-c. define variables
+  
+
+            // console.log("id is " + id);
+            // console.log("given_name is " + given_name);
+            // console.log("surname is " + surname);
+
+            // 1-d. create a list item and fill in values from profile 
+  
+        
+            // 1.e. append to wit-list container (div) on page
 
 
             // ************************************************  //
-            // CODING - Step 3: Enhanced Directory/Index (cards) //
+            // CODING - Step 2: Enhanced Directory/Index (cards) //
             // ************************************************  //
 
-            // 3-a. assign variables for values that may or may not exist 
+            // 2-a. define additional variables
             
 
-            // 3-b. create a card and fill in values from profile 
-            var card = $(`
-              <a class="ui card" href="show.html?id=" data-given_name="" data-surname="" data-birth_year="" >
-                <div class="image">
-                  
-                </div>
-                <div class="content">
-                  
-                </div>
-                <div class="extra content">
-                  
-                </div>
-              </a>`);
+            // 2-b. create a 'card' and fill in values from profile 
+            // var card = 
+            //   '<a class="ui card" href="show.html?id=' + id + '" data-given_name=" ' + given_name + '" data-surname="' + surname + '" data-birth_year="" >' 
+            //     + '<div class="image"><img src="' + photo + '"></div>'
+            //     + '<div class="content">'
+            //       + '<div class="header">' + given_name + ' ' + surname + '</div>'
+            //     + '</div>'
+            //     + '<div class="extra content">' + birth_year + ' - ' + death_year + '</div>'
+            //   + '</a>';
 
-            // 3-c. append to wit-cards container (div) on page
-            
+            // 2-c. append to wit-cards container (div) on page
 
-          
-
-          // 3-d. initial sort is surname (last name)
+            // initial sort is surname (last name)
+            // sortCards('surname');
           
 
         } //success
