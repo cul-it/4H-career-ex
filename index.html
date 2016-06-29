@@ -204,6 +204,7 @@
           var profiles = data.profiles;
 
           // 1-a. define variables for 'for' loop
+          
 
           // 1-b. loop through each profile in the data file 
 
@@ -211,7 +212,7 @@
             //console.log("position is " + position);
 
             // 1-c. define variables
-  
+            // var p = profiles[position];
 
             // console.log("id is " + id);
             // console.log("given_name is " + given_name);
@@ -227,18 +228,22 @@
             // CODING - Step 2: Enhanced Directory/Index (cards) //
             // ************************************************  //
 
+            /* // REMOVE '/*' to remove this commented block of code
             // 2-a. define additional variables
-            
+            var photo = p.image_path;
+            var birth_year = p.birth_year;
+            var death_year = p.death_year;
 
             // 2-b. create a 'card' and fill in values from profile 
-            // var card = 
-            //   '<a class="ui card" href="show.html?id=' + id + '" data-given_name=" ' + given_name + '" data-surname="' + surname + '" data-birth_year="" >' 
-            //     + '<div class="image"><img src="' + photo + '"></div>'
-            //     + '<div class="content">'
-            //       + '<div class="header">' + given_name + ' ' + surname + '</div>'
-            //     + '</div>'
-            //     + '<div class="extra content">' + birth_year + ' - ' + death_year + '</div>'
-            //   + '</a>';
+            var card = 
+               '<a class="ui card" href="show.html?id=' + id + '" data-given_name=" ' + given_name + '" data-surname="' + surname + '" data-birth_year="" >' 
+                 + '<div class="image"><img src="' + photo + '"></div>'
+                 + '<div class="content">'
+                   + '<div class="header">' + given_name + ' ' + surname + '</div>'
+                 + '</div>'
+                 + '<div class="extra content">' + birth_year + ' - ' + death_year + '</div>'
+               + '</a>';
+            */ // REMOVE '*/' to remove this commented block of code 
 
             // 2-c. append to wit-cards container (div) on page
 
