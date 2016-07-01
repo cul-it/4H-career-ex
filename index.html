@@ -1,8 +1,8 @@
-<!DOCTYPE html> 
-<html lang=en> 
-  <head>  
-    <meta charset=utf-8> 
-    <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
 
     <title>League of Coders</title>
@@ -17,7 +17,7 @@
     </script>
     <script src="Semantic-UI/semantic.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
-   
+
   </head>
 
   <body>
@@ -64,7 +64,7 @@
           <caption>http://www.atomicheritage.org/history/computing-and-manhattan-project</caption>
           <caption>https://en.wikipedia.org/wiki/Women_in_computing</caption>
           <caption>https://en.wikipedia.org/wiki/Human_computer</caption>
-          
+
         </div>
         <div class="six wide right floated column">
           <div class="carousel">
@@ -83,9 +83,9 @@
             <div>
               <img src="/img/Women_holding_parts_of_the_first_four_Army_computers.jpg" class="ui large bordered rounded image">
             </div>
-            
+
           </div>
-                     
+
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
   </div>
 
   <script>
-    
+
     $(document).ready(function() {
 
       $('.carousel').slick({
@@ -154,11 +154,11 @@
           // you can use any ui transition
           transition: 'drop'
       });
-      
+
       // http://api.jquery.com/jquery.ajax/
       $.ajax({
         url: '/data/wit.json',
-        type: "POST",
+        type: "GET",
         dataType: 'json',
         success: function (data) {
 
@@ -169,33 +169,33 @@
           // get profiles from data
           var profiles = data.profiles;
 
-          // 1-a. loop through each profile in the data file 
+          // 1-a. loop through each profile in the data file
           $.each(profiles, function( i, val ) {
 
-            // 1-b. create a list item and fill in values from profile 
+            // 1-b. create a list item and fill in values from profile
             var list_item = $(`<li><a href="show.html?id=${val.id}">${val.given_name} ${val.surname}</a></li>`);
-            
+
             // 1.c. append to wit-list container (div) on page
-            $('#wit-list').append(list_item);
+            // $('#wit-list').append(list_item);
 
 
             // ************************************************  //
             // CODING - Step 3: Enhanced Directory/Index (cards) //
             // ************************************************  //
 
-            // 3-a. assign variables for values that may or may not exist 
-            var birth_year = '', 
+            // 3-a. assign variables for values that may or may not exist
+            var birth_year = '',
                 death_year = '';
 
             if (val.birth_year) {
               birth_year = val.birth_year;
             }
-            
+
             if (val.death_year) {
               death_year = " - " + val.death_year;
             }
-            
-            // 3-b. create a card and fill in values from profile 
+
+            // 3-b. create a card and fill in values from profile
             var card = $(`
               <a class="ui fluid card" href="show.html?id=${val.id}" data-given_name="${val.given_name}" data-surname="${val.surname}" data-birth_year="${val.birth_year}" >
                 <div class="image">

@@ -1,8 +1,8 @@
-<!DOCTYPE html> 
-<html lang=en> 
-  <head>  
-    <meta charset=utf-8> 
-    <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
 
     <title>League of Coders</title>
@@ -14,13 +14,13 @@
 
     <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous">
     </script>
-    
+
     <script src="/Semantic-UI/semantic.min.js"></script>
 
   </head>
 
   <body>
-    
+
     <!-- Page Contents -->
     <div class="ui inverted vertical small masthead center aligned segment">
 
@@ -46,7 +46,7 @@
 
     <script>
 
-      // Retrieve a value from a parameter in a query string 
+      // Retrieve a value from a parameter in a query string
       function getQueryParam(param) {
         var querystring = window.location.search.substring(1);
         if (querystring !== "") {
@@ -64,10 +64,10 @@
         //http://api.jquery.com/jquery.ajax/
         $.ajax({
           url: '/data/wit.json',
-          type: "POST",
+          type: "GET",
           dataType: 'json',
           success: function (data) {
-            
+
             // **************************************** //
             // CODING - Step 2: Details for a WIT by ID //
             // **************************************** //
@@ -89,30 +89,30 @@
 
                 if (val.id == id) {
 
-                  // 2-d. assign variables for values that may or may not exist 
+                  // 2-d. assign variables for values that may or may not exist
                   // out of order, you can first show them without this and they'll get a lot of "undefined" text on the page, then add this handling
-                  var known_for = '', 
+                  var known_for = '',
                       alma_mater = '',
-                      birth_year = '', 
+                      birth_year = '',
                       death_year = '';
 
                   if (val.known_for) {
                     known_for = val.known_for;
-                  } 
+                  }
 
                   if (val.alma_mater) {
                     alma_mater = val.alma_mater;
-                  } 
+                  }
 
                   if (val.birth_year) {
                     birth_year = val.birth_year;
                   }
-                  
+
                   if (val.death_year) {
                     death_year = " - " + val.death_year;
                   }
-                  
-                  // 2-b. fill in values from profile 
+
+                  // 2-b. fill in values from profile
                   details = $(`
                     <div class="ui top aligned stackable grid container">
                       <div class="row">
@@ -134,10 +134,10 @@
                     </div>`);
                 } //end if
 
-              });   
+              });
 
-            } else { // 2-e. error handling for no ID passed/found - may or may not get to this 
-              
+            } else { // 2-e. error handling for no ID passed/found - may or may not get to this
+
               details = $(`
                 <div class="ui one column centered grid">
                   <div class="column center aligned">
@@ -150,10 +150,10 @@
                   </div>
                 </div>`);
             } //end if
-              
+
             // 2-c. append to wit-details container (div) on page
             $('#wit-detail').append(details);
-           
+
           }
         });
       });
