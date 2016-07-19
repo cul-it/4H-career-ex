@@ -1,13 +1,12 @@
-<!DOCTYPE html> 
-<html lang=en> 
-  <head>  
-    <meta charset=utf-8> 
-    <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
 
     <title>League of Coders</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="Semantic-UI/semantic.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
@@ -17,7 +16,7 @@
     </script>
     <script src="Semantic-UI/semantic.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
-   
+
   </head>
 
   <body>
@@ -55,17 +54,13 @@
 
           <p>The first programmers of the <strong>ENIAC</strong>, who were all women, were selected from the top ranks of “human computers” or those who performed mathematical calculations manually.  The assumption was that the work of “coding” for a computer known as the ENIAC would be similar to the calculations performed by the human computers. When the ENIAC women started their jobs, the work that they encountered required new innovations to solve problems that engineers did not account for.  In doing their job, the ENIAC women ventured into unknown territory and are now recognized as inventing the earliest form of computer programming.  To be able to program the ENIAC, the women studied the machine’s design and figured out how it worked.   They had to master the machine’s wiring to be able to program this early type of analog computer.  But the logical and creative patterns that were necessary to set up the computer to solve a problem were analogous what computer programmers do today without manually plugging wires.</p>
 
-          
+
           <h3>Emergence of Commercial Computing - <i>Grace Hopper</i> </h3>
 
           <p>Grace Hopper is widely recognized as one of the most influential pioneers of computer science.    She was a visionary, an inventor, an educator, and an advocate.   Anyone who develops software today can see in Hopper’s work the origins of key principles and patterns that are fundamental to modern programming languages. She was one of the first programmers on the first computers in the United States, the <strong>Harvard Mark I.</strong></p>
 
           <p>During the emergence of the commercial computer industry, she worked on the <strong>UNIVAX</strong>, where she developed the conceptual building blocks for human-oriented computer languages.   Hopper designed and developed the “A-0” which is recognized at the world first compiler for a computer.    As an inventor, Hopper was not inclined to cloister herself in her lab.  Instead, she built alliances and mentored younger programmers.  She was the leader of major projects such as the development of the COBOL programming language, which was modeled after her invention of the <strong>FLOW-MATIC </strong>language.  She effectively used her excellent communication skills and strove to make her vision and her inventions visible and usable by many people. </p>
 
-          <p>&nbsp;</p>
-
-          <caption>&copy; Sandy Payette, PhD Candidate, Cornell University</caption>
-          
         </div>
         <div class="six wide right floated column">
           <div class="carousel">
@@ -86,9 +81,9 @@
               <img src="/img/1952_hopper-grace_large.jpg" class="ui large bordered rounded image">
               <caption>Grace Murray Hopper working UNIVAC, c. 1960</caption>
             </div>
-            
+
           </div>
-                     
+
         </div>
       </div>
     </div>
@@ -121,7 +116,7 @@
               <caption>Coding camps for kids are offered at several universities. Credit: Florida Gulf Coast University</caption>
             </div>
           </div>
-          
+
         </div>
 
         <div class="eight wide right floated column">
@@ -167,12 +162,12 @@
 
   <div class="ui container">
     <p>&nbsp;</p>
-    <small>&copy; 2016 League of <i class="woman icon"></i> Coders</small>
+    <small>&copy; 2016 League of <i class="woman icon"></i>Coders</small>
     <p>&nbsp;</p>
   </div>
 
   <script>
-    
+
     $(document).ready(function() {
 
       $('.carousel').slick({
@@ -193,7 +188,7 @@
       // http://api.jquery.com/jquery.ajax/
       $.ajax({
         url: '/data/wit.json',
-        type: "POST",
+        type: "GET",
         dataType: 'json',
         success: function (data) {
 
@@ -203,32 +198,35 @@
  
           // get profiles from data
           var profiles = data.profiles;
- 
-          // 1-a. loop through each profile in the data file 
+
+          // 1-a. loop through each profile in the data file
           $.each(profiles, function( i, val ) {
- 
-            // 1-b. create a list item and fill in values from profile 
-            // var list_item = $(`<li><a href="show.html?id=${val.id}">${val.given_name} ${val.surname}</a></li>`);             
-            // // 1.c. append to wit-list container (div) on page
+
+            // 1-b. create a list item and fill in values from profile
+            var list_item = $(`<li><a href="show.html?id=${val.id}">${val.given_name} ${val.surname}</a></li>`);
+
+            // 1.c. append to wit-list container (div) on page
             // $('#wit-list').append(list_item);
+
 
             // ************************************************  //
             // CODING - Step 3: Enhanced Directory/Index (cards) //
             // ************************************************  //
 
-            // 3-a. assign variables for values that may or may not exist 
-            var birth_year = '', 
+
+            // 3-a. assign variables for values that may or may not exist
+            var birth_year = '',
                 death_year = '';
 
             if (val.birth_year) {
               birth_year = val.birth_year;
             }
- 
+
             if (val.death_year) {
               death_year = " - " + val.death_year;
             }
 
-            // 3-b. create a card and fill in values from profile 
+            // 3-b. create a card and fill in values from profile
             var card = $(`
               <a class="ui fluid card" href="show.html?id=${val.id}" data-given_name="${val.given_name}" data-surname="${val.surname}" data-birth_year="${val.birth_year}" >
                  <div class="image">
@@ -249,7 +247,7 @@
 
           // 3-d. initial sort is surname (last name)
           sortCards('surname');
-          
+
         } //success
       }); //$.ajax
 
